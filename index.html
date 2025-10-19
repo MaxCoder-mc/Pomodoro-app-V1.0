@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Frontend Mentor | Pomodoro app</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <img src="./assets/logo.svg" alt="pomodoro logo" />
+      </div>
+
+      <div class="timer-tabs" role="tablist" aria-label="Timer modes">
+        <button
+          class="tab-button tp3-font1 active"
+          data-mode="pomodoro"
+          aria-pressed="true"
+        >
+          Pomodoro
+        </button>
+        <button
+          class="tab-button tp3-font1"
+          data-mode="shortBreak"
+          aria-pressed="false"
+        >
+          Short Break
+        </button>
+        <button
+          class="tab-button tp3-font1"
+          data-mode="longBreak"
+          aria-pressed="false"
+        >
+          Long Break
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <div class="timer-card">
+        <div class="outer">
+          <div class="middle">
+            <svg
+              class="inner"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="xMidYMid meet"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <circle class="progress-ring" cx="50" cy="50" r="45" />
+            </svg>
+
+            <!-- role=region + aria-live to announce changes to screen readers -->
+            <div
+              class="timer-content"
+              role="region"
+              aria-label="Countdown timer"
+            >
+              <div
+                id="time-display"
+                class="tp1-font1"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                25:00
+              </div>
+              <button id="toggle-btn" class="tp2-font1" aria-pressed="false">
+                Start
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <button
+          class="toggle-settings"
+          id="toggleSettings"
+          aria-label="Open settings"
+          aria-haspopup="dialog"
+          aria-controls="settingsPanel"
+        >
+          <img src="./assets/icon-settings.svg" alt="" aria-hidden="true" />
+        </button>
+      </div>
+    </main>
+
+    <!-- modal-overlay gets aria-hidden toggled by JS; role=dialog on settingsPanel -->
+    <div class="modal-overlay hidden" id="modalOverlay" aria-hidden="true">
+      <div
+        class="settings-panel"
+        id="settingsPanel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="settingsTitle"
+      >
+        <div class="setting-panel_header">
+          <h2 class="settings-title" id="settingsTitle">Settings</h2>
+
+          <button
+            class="close-btn"
+            id="closeSettings"
+            aria-label="Close settings"
+          >
+            <img src="./assets/icon-close.svg" alt="" aria-hidden="true" />
+          </button>
+        </div>
+        <div class="divider-header"></div>
+
+        <div class="setting-panel_body">
+          <!-- Time Settings -->
+          <div class="setting-group">
+            <label class="setting-label">Time (Minutes)</label>
+            <div class="settings">
+              <div class="setting-timer">
+                <label class="setting-timer_label" for="pomodoroTime"
+                  >Pomodoro</label
+                >
+                <input
+                  type="number"
+                  class="setting-input"
+                  id="pomodoroTime"
+                  value="25"
+                  min="1"
+                  max="60"
+                  aria-label="Pomodoro minutes"
+                />
+                <div class="arrows">
+                  <button
+                    class="up"
+                    type="button"
+                    aria-label="Increase pomodoro minutes"
+                  >
+                    <img
+                      src="./assets/icon-arrow-up.svg"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </button>
+                  <button
+                    class="down"
+                    type="button"
+                    aria-label="Decrease pomodoro minutes"
+                  >
+                    <img
+                      src="./assets/icon-arrow-down.svg"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </button>
+                </div>
+              </div>
+
+              <div class="setting-timer">
+                <label class="setting-timer_label" for="shortBreakTime"
+                  >Short Break</label
+                >
+                <input
+                  type="number"
+                  class="setting-input"
+                  id="shortBreakTime"
+                  value="5"
+                  min="1"
+                  max="30"
+                  aria-label="Short break minutes"
+                />
+                <div class="arrows">
+                  <button
+                    class="up"
+                    type="button"
+                    aria-label="Increase short break minutes"
+                  >
+                    <img
+                      src="./assets/icon-arrow-up.svg"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </button>
+                  <button
+                    class="down"
+                    type="button"
+                    aria-label="Decrease short break minutes"
+                  >
+                    <img
+                      src="./assets/icon-arrow-down.svg"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </button>
+                </div>
+              </div>
+
+              <div class="setting-timer">
+                <label class="setting-timer_label" for="longBreakTime"
+                  >Long Break</label
+                >
+                <input
+                  type="number"
+                  class="setting-input"
+                  id="longBreakTime"
+                  value="15"
+                  min="1"
+                  max="60"
+                  aria-label="Long break minutes"
+                />
+                <div class="arrows">
+                  <button
+                    class="up"
+                    type="button"
+                    aria-label="Increase long break minutes"
+                  >
+                    <img
+                      src="./assets/icon-arrow-up.svg"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </button>
+                  <button
+                    class="down"
+                    type="button"
+                    aria-label="Decrease long break minutes"
+                  >
+                    <img
+                      src="./assets/icon-arrow-down.svg"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- Font Settings -->
+          <div class="setting-group flex">
+            <label class="setting-label">Font</label>
+            <div class="font-selector" role="listbox" aria-label="Select font">
+              <div
+                class="font-option tps2-font1 active"
+                data-font="Kumbh Sans"
+                role="option"
+                aria-selected="true"
+              >
+                Aa
+              </div>
+              <div
+                class="font-option tps2-font2"
+                data-font="Roboto Slab"
+                role="option"
+                aria-selected="false"
+              >
+                Aa
+              </div>
+              <div
+                class="font-option tps2-font3"
+                data-font="Space Mono"
+                role="option"
+                aria-selected="false"
+              >
+                Aa
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- Color Settings -->
+          <div class="setting-group flex">
+            <label class="setting-label">Color</label>
+            <div
+              class="color-themes"
+              role="listbox"
+              aria-label="Select theme color"
+            >
+              <div
+                class="theme-option theme-red active"
+                data-color="#F87070"
+                role="option"
+                aria-selected="true"
+              ></div>
+              <div
+                class="theme-option theme-cyan"
+                data-color="#70F3F8"
+                role="option"
+                aria-selected="false"
+              ></div>
+              <div
+                class="theme-option theme-purple"
+                data-color="#D881F8"
+                role="option"
+                aria-selected="false"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          class="apply-btn"
+          id="applySettings"
+          aria-label="Apply settings"
+        >
+          Apply
+        </button>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
