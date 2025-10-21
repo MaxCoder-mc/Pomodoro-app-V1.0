@@ -526,13 +526,6 @@ body {
   filter: brightness(1.2);
 }
 
-:where(.tab-button, .apply-btn) {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 .toggle-settings {
   background: transparent;
   border: none;
@@ -549,6 +542,25 @@ body {
 
 .hidden {
   display: none;
+}
+
+:where(
+    .tab-button,
+    .apply-btn,
+    #toggle-btn,
+    .toggle-settings,
+    .close-btn,
+    .arrows button,
+    .setting-input,
+    .auto-toggle,
+    .font-option,
+    .theme-option
+  ) {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 :focus {
@@ -614,6 +626,7 @@ body {
     line-height: 1.45;
   }
 }
+
 
 
 
