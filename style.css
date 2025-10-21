@@ -584,13 +584,6 @@ body {
   }
 }
 
-@media (hover: none) and (pointer: coarse) {
-  .tab-button:focus {
-    outline: none;
-    box-shadow: none;
-  }
-}
-
 
 /* ------------------------------------------------------- */
 /* ----------------------- DESKTOP ----------------------- */
@@ -626,6 +619,7 @@ body {
     line-height: 1.45;
   }
 }
+
 
 
 
