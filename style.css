@@ -526,6 +526,13 @@ body {
   filter: brightness(1.2);
 }
 
+:where(.tab-button, .apply-btn) {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .toggle-settings {
   background: transparent;
   border: none;
@@ -598,3 +605,4 @@ body {
     line-height: 1.45;
   }
 }
+
