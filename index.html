@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="./style.css" />
     <title>Frontend Mentor | Pomodoro app</title>
   </head>
-  <body>
-    <header class="header">
+  <body class="flex-col-center">
+    <header class="header flex-col-center">
       <div class="logo">
         <img src="./assets/logo.svg" alt="pomodoro logo" />
       </div>
@@ -45,9 +45,9 @@
     </header>
 
     <main>
-      <div class="timer-card">
-        <div class="outer">
-          <div class="middle">
+      <div class="timer-card flex-col-center">
+        <div class="outer flex-center">
+          <div class="middle flex-center">
             <svg
               class="inner"
               viewBox="0 0 100 100"
@@ -60,7 +60,7 @@
 
             <!-- role=region + aria-live to announce changes to screen readers -->
             <div
-              class="timer-content"
+              class="timer-content flex-col-center"
               role="region"
               aria-label="Countdown timer"
             >
@@ -92,7 +92,11 @@
     </main>
 
     <!-- modal-overlay gets aria-hidden toggled by JS; role=dialog on settingsPanel -->
-    <div class="modal-overlay hidden" id="modalOverlay" aria-hidden="true">
+    <div
+      class="modal-overlay flex-center hidden"
+      id="modalOverlay"
+      aria-hidden="true"
+    >
       <div
         class="settings-panel"
         id="settingsPanel"
@@ -240,7 +244,7 @@
           <div class="divider"></div>
 
           <!-- Font Settings -->
-          <div class="setting-group flex">
+          <div class="setting-group flex-col-center">
             <label class="setting-label">Font</label>
             <div class="font-selector" role="listbox" aria-label="Select font">
               <div
@@ -273,7 +277,7 @@
           <div class="divider"></div>
 
           <!-- Color Settings -->
-          <div class="setting-group flex">
+          <div class="setting-group flex-col-center">
             <label class="setting-label">Color</label>
             <div
               class="color-themes"
@@ -303,7 +307,7 @@
         </div>
 
         <button
-          class="apply-btn"
+          class="apply-btn tps2-font1"
           id="applySettings"
           aria-label="Apply settings"
         >
