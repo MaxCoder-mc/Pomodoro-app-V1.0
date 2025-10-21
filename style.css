@@ -564,6 +564,15 @@ body {
   transition: outline-color 0.3s ease;
 }
 
+.tab-button:focus {
+  outline: none;
+}
+
+.tab-button:focus-visible {
+  box-shadow: 0 0 0 3px var(--accent-color);
+  border-radius: 0.5rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
@@ -605,4 +614,5 @@ body {
     line-height: 1.45;
   }
 }
+
 
